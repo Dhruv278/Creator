@@ -5,7 +5,7 @@ generator client {
 
 datasource db {
   provider = "postgresql"
-  url      = env("DATABASE_URL")
+  url      = "postgres://ojoikiqy:McTlmA87OI7-PvrXHTaX4OPvMO9AtsFn@silly.db.elephantsql.com/ojoikiqy"
 }
 
 model TestUserApiLimit{

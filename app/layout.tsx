@@ -19,24 +19,21 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    // <ClerkProvider>
+    <ClerkProvider>
 
-    //   <html lang="en">
-    //     <head>
+      <html lang="en">
+        <head>
 
-    //   <link rel="icon" href="/logo.png" sizes="any" />
-    //     </head>
-    //     <CrispProvider />
-    //     <body className={inter.className}>
+      <link rel="icon" href="/logo.png" sizes="any" />
+        </head>
+        <CrispProvider />
+        <body className={inter.className}>
 
-    //       <ModelProvider />
-    //       <ToastProvider />
-    //       {children}
-    //       </body>
-    //   </html>
-    // </ClerkProvider>
-    <div>
-      Hello
-    </div>
+          <ModelProvider />
+          <ToastProvider />
+          {children}
+          </body>
+      </html>
+    </ClerkProvider>
   );
 }

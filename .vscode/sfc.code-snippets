@@ -1,0 +1,21 @@
+{
+	
+		"Next Functional Component": {
+		  "prefix": ["sfc"],
+		  "body": [
+			"",
+			"const $TM_FILENAME_BASE = () => {",
+			"  return (",
+			"    <div>",
+			"      $2",
+			"    </div>",
+			"  )",
+			"};",
+			"",
+			"export default $TM_FILENAME_BASE",
+			""
+		  ],
+		  "description": "Next Functional Component"
+		}
+	
+}

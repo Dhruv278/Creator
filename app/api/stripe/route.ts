@@ -54,7 +54,8 @@ export async function GET(){
     //             userId,
     //         }
     //     })
-    //     return new NextResponse(JSON.stringify({url:stripeSession.url}))
+        // return new NextResponse(JSON.stringify({url:stripeSession.url}))
+        return new NextResponse("/")
 
     // }catch (error){
     //     console.log("[STRIPE-ERROR]",error);

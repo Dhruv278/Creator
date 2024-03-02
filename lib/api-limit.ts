@@ -24,7 +24,7 @@ export const increaseApiLimit=async()=>{
         await prismadb.testUserApiLimit.create({
             data:{
                 userId:userId,
-                count:1
+                count:0
             }
         })
     }

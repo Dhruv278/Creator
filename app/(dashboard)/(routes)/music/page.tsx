@@ -41,7 +41,7 @@ const MusicPage = () => {
       if(response.status===200){
         const timer=setInterval(async()=>{
            try{
-            const res=await axios.get("/api/musicWebhook/fetchMusicStream");
+            const res=await axios.get("/api/musicWebhook/fetchData");
             console.log(res.data)
             console.log(res.status)
             if(res.status===200){

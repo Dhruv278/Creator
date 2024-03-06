@@ -5,7 +5,7 @@ export default authMiddleware({
   publicRoutes: ['/',"/api/webhook","/api/musicWebhook/:id","/api/videoWebhook/:id"],
   // Routes that can always be accessed, and have
   // no authentication information
-  ignoredRoutes: ['/no-auth-in-this-route',"/api/webhook","/api/musicWebhook/:id","/api/videoWebhook/:id"],
+  ignoredRoutes: ['/no-auth-in-this-route',"/api/webhook","/api/musicWebhook/hook/:id","/api/videoWebhook/:id"],
 });
  
 export const config = {

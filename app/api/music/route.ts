@@ -39,7 +39,7 @@ export async function POST(req: Request) {
                 prompt_a: prompt,
                
               },
-              webhook:`${process.env.NEXT_PUBLIC_APP_URL}/api/musicWebhook/${userId}`
+              webhook:`https://main.d3e2c0kuarh3hk.amplifyapp.com/api/musicWebhook/${userId}`
               
             }
           );

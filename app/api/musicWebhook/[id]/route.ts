@@ -20,7 +20,7 @@ export async function GET(req:Request,context:any){
 
     let musicData=await getMusicData(userId);
    
-    if(musicData===undefined)return new NextResponse(userId,{status:204})
+    if(musicData===undefined)return new NextResponse(undefined,{status:204})
     
     await increaseApiLimit();
 

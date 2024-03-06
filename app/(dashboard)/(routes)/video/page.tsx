@@ -40,7 +40,7 @@ const VideoPage = () => {
       if(response.status===200){
         const timer=setInterval(async()=>{
            try{
-            const res=await axios.get("/api/videoWebhook/fetchVideoData");
+            const res=await axios.get("/api/videoWebhook/fetchData");
 
             if(res.status===200){
               setVideo(res.data.url);

@@ -8,7 +8,7 @@ export async function POST(req:Request,context:any){
     const id=params.id;
 
     const final=await req.json();
-
+    console.log(final);
     await setVideoData(id,final.output[0]);
    
   

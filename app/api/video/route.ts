@@ -38,7 +38,7 @@ export async function POST(req: Request) {
               prompt: prompt,
              
             },
-            webhook:`https://main.d3e2c0kuarh3hk.amplifyapp.com/api/videoWebhook/${userId}`
+            webhook:`https://main.d3e2c0kuarh3hk.amplifyapp.com/api/videoWebhook/hook/${userId}`
           }
         );
 

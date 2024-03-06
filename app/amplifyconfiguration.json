@@ -1,0 +1,10 @@
+{
+  "aws_project_region": "eu-north-1",
+  "aws_cloud_logic_custom": [
+    {
+      "name": "webhook",
+      "endpoint": "https://btfhau6b54.execute-api.eu-north-1.amazonaws.com/staging",
+      "region": "eu-north-1"
+    }
+  ]
+}

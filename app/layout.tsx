@@ -8,7 +8,7 @@ import CrispProvider from "@/components/CrispProvider";
 
 const inter = Inter({ subsets: ["latin"] });
 import { Amplify } from 'aws-amplify';
-import amplifyconfig from '@/app/amplifyconfiguration.json';
+import amplifyconfig from './amplifyconfiguration.json'
 
 Amplify.configure(amplifyconfig)
 export const metadata: Metadata = {

@@ -1,4 +1,5 @@
 import { checkApiLimits, increaseApiLimit } from '@/lib/api-limit';
+import { createMusicData, createVideoData } from '@/lib/utils';
 import { auth } from '@clerk/nextjs';
 import { NextResponse } from 'next/server';
 import Replicate from 'replicate';
@@ -29,20 +30,22 @@ export async function POST(req: Request) {
         if(!freeTrial){
             return new NextResponse("Free trial has expired", {status:403})
         }
-        const response = await replicate.run(
+        const output =  replicate.run(
           "anotherjesse/zeroscope-v2-xl:9f747673945c62801b13b84701c783929c0ee784e4748ec062204894dda1a351",
           {
             input: {
            
               prompt: prompt,
-   
-            }
+             
+            },
+            webhook:`${process.env.NEXT_PUBLIC_APP_URL}/api/videoWebhook/${userId}`
           }
         );
 
-          console.log(response);
-          await increaseApiLimit();
-        return NextResponse.json(response);
+  
+
+        await createVideoData(userId);
+        return NextResponse.json(null,{status:200});
     }catch(error){
         console.log("[VIDEO ERROR]",error);
         return new NextResponse("Internal error ", {status:500});

@@ -15,7 +15,7 @@ import { useState } from 'react';
 import { ChatCompletionRequestMessage } from 'openai';
 import Empty from '@/components/Empty';
 import Loader from '@/components/Loader';
-import { cn } from '@/lib/utils';
+import {  cn} from '@/lib/utils';
 import UserAvatar from '@/components/UserAvatar';
 import BotAvatar from '@/components/BotAvatar';
 import { useProModal } from '@/hooks/user-pro-model';
@@ -23,6 +23,7 @@ import toast from 'react-hot-toast';
 const MusicPage = () => {
   const router = useRouter();
   const proModal=useProModal();
+  const [isLoading,setIsLoading]=useState<boolean>(false);
   const [music, setMusic] = useState<string>();
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
@@ -30,16 +31,34 @@ const MusicPage = () => {
       prompt: ""
     }
   })
-  const isLoading = form.formState.isSubmitting;
+
   const onSubmit = async (values: z.infer<typeof formSchema>) => {
+    setIsLoading(true);
     try {
     setMusic(undefined);
-    
+ 
+    const response = await axios.post('/api/music',values);
+      if(response.status===200){
+        const timer=setInterval(async()=>{
+           try{
+            const res=await axios.get("/api/musicWebhook/fetchMusicStream");
+            console.log(res.data)
+            console.log(res.status)
+            if(res.status===200){
+              setMusic(res.data.url);
+              setIsLoading(false);
+              clearInterval(timer);
+              router.refresh();
+            }
+           }catch(error:any){
+             console.log(error) 
+           }
 
-      const response = await axios.post('/api/music',values);
-      setMusic(response.data.audio)
+        },3000)
+      }
       form.reset()
     } catch (error: any) {
+      setIsLoading(false);
       if(error?.response?.status===403){
         proModal.onOpen();
       }else{
@@ -78,7 +97,7 @@ const MusicPage = () => {
         </Form>
 
         <div className='space-y-4 mt-4'>
-          {isLoading && (
+          {isLoading  && (
             <div className='p-8 rounded-lg w-full flex items-center justify-center bg-muted'>
               <Loader />
             </div>

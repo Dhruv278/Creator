@@ -15,9 +15,6 @@ import { useState } from 'react';
 import { ChatCompletionRequestMessage } from 'openai';
 import Empty from '@/components/Empty';
 import Loader from '@/components/Loader';
-import { cn } from '@/lib/utils';
-import UserAvatar from '@/components/UserAvatar';
-import BotAvatar from '@/components/BotAvatar';
 import { useProModal } from '@/hooks/user-pro-model';
 
 
@@ -26,22 +23,40 @@ const VideoPage = () => {
   const router = useRouter();
   const proModal=useProModal();
   const [video, setVideo] = useState<string>();
+  const [isLoading,setIsLoading]=useState<boolean>(false)
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
     defaultValues: {
       prompt: ""
     }
   })
-  const isLoading = form.formState.isSubmitting;
+
   const onSubmit = async (values: z.infer<typeof formSchema>) => {
     try {
     setVideo(undefined);
-    
+    setIsLoading(true)
 
       const response = await axios.post('/api/video',values);
-      setVideo(response.data[0]);
+      if(response.status===200){
+        const timer=setInterval(async()=>{
+           try{
+            const res=await axios.get("/api/videoWebhook/fetchVideoData");
+
+            if(res.status===200){
+              setVideo(res.data.url);
+              setIsLoading(false)
+              router.refresh();
+              clearInterval(timer);
+            }
+           }catch(error:any){
+             console.log(error) 
+           }
+
+        },7000)
+      }
       form.reset()
     } catch (error: any) {
+      setIsLoading(false)
       if(error?.response?.status===403){
         proModal.onOpen();
       }

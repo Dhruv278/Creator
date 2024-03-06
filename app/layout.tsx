@@ -7,7 +7,10 @@ import ToastProvider from "@/components/ToastProvider";
 import CrispProvider from "@/components/CrispProvider";
 
 const inter = Inter({ subsets: ["latin"] });
+import { Amplify } from 'aws-amplify';
+import amplifyconfig from '../src/amplifyconfiguration.json';
 
+Amplify.configure(amplifyconfig)
 export const metadata: Metadata = {
   title: "Creator",
   description: "AI Platform",

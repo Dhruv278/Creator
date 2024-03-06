@@ -18,9 +18,9 @@ export async function GET(req:Request,context:any){
     const {userId}=auth();
     if(!userId)return new NextResponse("Unauthorized",{status:401});
 
-    let musicData=await getMusicData(userId!);
+    let musicData=await getMusicData(userId);
    
-    if(musicData===undefined)return new NextResponse(null,{status:204})
+    if(musicData===undefined)return new NextResponse(userId,{status:204})
     
     await increaseApiLimit();
 

@@ -43,6 +43,7 @@ export async function POST(req: Request) {
               
             }
           );
+          console.log(userId);
        await createMusicData(userId);
         return NextResponse.json(null,{status:200});
     }catch(error){

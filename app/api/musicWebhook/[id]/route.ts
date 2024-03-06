@@ -3,7 +3,10 @@ import { increaseApiLimit } from "@/lib/api-limit";
 import {  getMusicData, setMusicData } from "@/lib/utils";
 import { auth } from "@clerk/nextjs";
 import { NextResponse } from "next/server"
+import { Amplify } from 'aws-amplify';
+import amplifyconfig from '../../../../src/amplifyconfiguration.json';
 
+Amplify.configure(amplifyconfig);
 export async function POST(req:Request,context:any){
     const {params}=context;
     const id=params.id;

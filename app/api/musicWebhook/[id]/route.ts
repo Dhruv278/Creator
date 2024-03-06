@@ -7,10 +7,11 @@ import { NextResponse } from "next/server"
 export async function POST(req:Request,context:any){
     const {params}=context;
     const id=params.id;
+    console.log("data fetched")
 
     const final=await req.json();
     
-    setMusicData(id,final.output.audio)
+    await setMusicData(id,final.output.audio)
     return new NextResponse(null,{status:200})
     
 }
@@ -19,7 +20,7 @@ export async function GET(req:Request,context:any){
     if(!userId)return new NextResponse("Unauthorized",{status:401});
 
     let musicData=await getMusicData(userId);
-   
+    console.log(musicData);
     if(musicData===undefined)return new NextResponse(undefined,{status:204})
     
     await increaseApiLimit();

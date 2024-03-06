@@ -39,11 +39,11 @@ export async function POST(req: Request) {
                 prompt_a: prompt,
                
               },
-              webhook:`https://main.d3e2c0kuarh3hk.amplifyapp.com/api/musicWebhook/${userId}`
+              webhook:`https://webhooks.amplify.eu-north-1.amazonaws.com/prod/webhooks?id=849687bc-27af-4881-81a7-2dcf8cf3e87e&token=gAwmohtlIpTs1Wgony03aaoLjLMZ5VdbjwE1VB79u1w&operation=startbuild/api/musicWebhook/${userId}`
               
             }
           );
-          console.log(response);
+        //   console.log(response);
        await createMusicData(userId);
         return NextResponse.json(null,{status:200});
     }catch(error){

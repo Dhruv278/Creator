@@ -5,7 +5,7 @@ export default authMiddleware({
   publicRoutes: ['/',"/api/webhook","/api/musicWebhook/:id","/api/videoWebhook/:id"],
   // Routes that can always be accessed, and have
   // no authentication information
-  ignoredRoutes: ['/no-auth-in-this-route','https://main.d3e2c0kuarh3hk.amplifyapp.com/api/musicWebhook/:id'],
+  ignoredRoutes: ['/no-auth-in-this-route','/api/musicWebhook/:id'],
 });
  
 export const config = {

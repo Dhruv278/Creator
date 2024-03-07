@@ -1,6 +1,6 @@
 "use client"
 
-import { Code, ImageIcon, LayoutDashboard, MessageSquare, Settings, VideoIcon } from "lucide-react";
+import { Code, ImageIcon, LayoutDashboard, MessageSquare, Music, Settings, VideoIcon } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
 import  {Montserrat}  from "next/font/google"
@@ -41,7 +41,7 @@ const routes=[
     },
     {
         label:"Music Generation",
-        icon:ImageIcon,
+        icon:Music,
         href:"/music",
         color:"text-emrald-500"
     },

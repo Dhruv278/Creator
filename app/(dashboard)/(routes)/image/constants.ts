@@ -20,14 +20,7 @@ export const amountOptions=[
         value:"3",
         label:"3 PhotoS",
     },
-    {
-        value:"4",
-        label:"4 PhotoS",
-    },
-    {
-        value:"5",
-        label:"5 PhotoS",
-    },
+
 ];
 
 export const resolutionOptions=[
@@ -39,8 +32,5 @@ export const resolutionOptions=[
         value:"512x512",
         label:"512x512"
     },
-    {
-        value:"1024x1024",
-        label:"1024x1024"
-    },
+    
 ]

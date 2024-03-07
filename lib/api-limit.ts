@@ -2,6 +2,7 @@ import { auth } from "@clerk/nextjs"
 
 import prismadb from "@/lib/prismadb"
 import { MAX_FREE_COUNTS } from "@/constants"
+import { checkSubscription } from "./subscription";
 
 
 export const increaseApiLimit=async()=>{
@@ -39,7 +40,7 @@ export const checkApiLimits=async()=>{
             userId
         }
     })
-    if(!userApiLimit || userApiLimit.count<MAX_FREE_COUNTS)return true
+    if(!userApiLimit || userApiLimit.count<MAX_FREE_COUNTS || await checkSubscription())return true
     else return false
 }
 export const getApiLimit=async()=>{

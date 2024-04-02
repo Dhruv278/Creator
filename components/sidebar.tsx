@@ -33,6 +33,7 @@ const routes=[
         href:"/image",
         color:"text-pink-500"
     },
+    // XYZ- Add testing comments
     {
         label:"Video Generation",
         icon:VideoIcon,
